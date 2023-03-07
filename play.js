@@ -24,6 +24,7 @@ class Button {
     this.paint(25);
   }
 
+  // Work around Safari's rule to only play sounds if given permission.
   async play(volume = 1.0) {
     this.sound.volume = volume;
     await new Promise((resolve) => {
@@ -67,12 +68,12 @@ class Game {
         if (this.playerPlaybackPos === this.sequence.length) {
           this.playerPlaybackPos = 0;
           this.addButton();
-          this.updateScore(this.sequence.length -1);
+          this.updateScore(this.sequence.length - 1);
           await this.playSequence();
         }
         this.allowPlayer = true;
       } else {
-        this.saveScore(this.sequence.length -1);
+        this.saveScore(this.sequence.length - 1);
         this.mistakeSound.play();
         await this.buttonDance(2);
       }
