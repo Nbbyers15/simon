@@ -1,9 +1,24 @@
-function loadScores() {
+async function loadScores() {
   let scores = [];
-  const scoresText = localStorage.getItem('scores');
-  if (scoresText) {
-    scores = JSON.parse(scoresText);
+
+  try {
+    const response = await fetch("/api/scores")
+    const scores = await response.json()
+
+    localStorage.setItem('scores', JSON.stringify(scores));
+  } catch {
+    const scoresText = localStorage.getItem('scores');
+    if (scoresText) {
+      scores = JSON.parse(scoresText);
+    }
   }
+
+
+  displayScores(scores);
+
+}
+
+function displayScores(scores) {
 
   const tableBodyEl = document.querySelector('#scores');
 
