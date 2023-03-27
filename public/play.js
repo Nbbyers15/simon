@@ -154,7 +154,7 @@ class Game {
 
     let found = false;
     for (const [i, prevScore] of scores.entries()) {
-      if (score > prevScore.score) {
+      if (newScore > prevScore.score) {
         scores.splice(i, 0, newScore);
         found = true;
         break;
@@ -177,9 +177,7 @@ const game = new Game();
 
 function delay(milliseconds) {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve(true);
-    }, milliseconds);
+    setTimeout(resolve, milliseconds);
   });
 }
 

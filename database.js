@@ -1,4 +1,4 @@
-const { MongoClient } = require('mongodb');
+const {MongoClient} = require('mongodb');
 
 // Read the credentials from environment variables so that you do not accidentally check in your credentials
 const userName = process.env.MONGOUSER;
